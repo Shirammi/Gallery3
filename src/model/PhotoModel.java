@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import  java.sql.*;
 
+
 public class PhotoModel {
 
 	private String DB_URL = "jdbc:mysql://localhost/photos";

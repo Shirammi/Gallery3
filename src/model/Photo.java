@@ -7,6 +7,7 @@ public class Photo {
 	private String description;
 	private int id;
 
+	public Photo(){};
 	public Photo(int id,  String title, String description) {
 		super();
 		this.id = id;
