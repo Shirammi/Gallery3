@@ -66,9 +66,9 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView fx:id="observablePhotoList" layoutX="48.0" layoutY="14.0" prefHeight="432.0" prefWidth="708.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="14.0">
+                  <TableView layoutX="48.0" layoutY="14.0" prefHeight="432.0" prefWidth="708.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="14.0">
                     <columns>
-                        <TableColumn prefWidth="76.0" text="Nazwa" />
+                        <TableColumn fx:id="title" prefWidth="76.0" text="Nazwa" />
                         <TableColumn prefWidth="57.0" text="Adres" />
                         <TableColumn prefWidth="76.0" text="Typ LL" />
                         <TableColumn text="Status budynku" />
