@@ -10,7 +10,7 @@ public class PhotoServices {
 	 * @param photoList
 	 * List of photos to serialize
 	 * @return
-	 * String with serialized in JSON photos.
+	 * String with serialized photos in JSON.
 	 */
 	public static String PhotosToJSON(ArrayList<Photo> photoList) {
 		Gson gson = new Gson();

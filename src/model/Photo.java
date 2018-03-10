@@ -9,13 +9,14 @@ public class Photo {
 
 	public Photo(){};
 	public Photo(int id,  String title, String description) {
-		super();
+		//super();
 		this.id = id;
 
 		this.title = title;
 		this.description = description;
 
 	}
+
 
 
 
