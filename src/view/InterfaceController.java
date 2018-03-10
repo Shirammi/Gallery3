@@ -19,44 +19,45 @@ import model.Photo;
 
 public class InterfaceController {
 	@FXML
-	private ObservableList<PhotoProperty> observablePhotoList; 
-	
+	private ObservableList<PhotoProperty> observablePhotoList;
+
 	@FXML
 	private TableView<PhotoProperty> photoTable;
-	
+
     @FXML
     private TableColumn<PhotoProperty, String> photoNameColumn;
     @FXML
     private TableColumn<PhotoProperty, String> localizationColumn;
-    
-    
-	
+
+
+
 	private GalleryController galleryControler;
 
 	public InterfaceController() {
 		this.galleryControler = new GalleryController();
-		this.observablePhotoList = new ObservableList<PhotoProperty>();
+		//this.observablePhotoList = new ObservableList<PhotoProperty>();
 	}
 
 	@FXML
 	void initialize() {
 		Gson gson = new Gson();
-		ArrayList<Photo> photoList = gson.fromJson(galleryControler.showPhotos(), new TypeToken<ArrayList<Photo>>(){}.getType());
-		//observablePhotoList = FXCollections.observableArrayList(photoList);
+		String json = galleryControler.showPhotos();
+		ArrayList<PhotoProperty> photoList = gson.fromJson(galleryControler.showPhotos(), new TypeToken<ArrayList<PhotoProperty>>(){}.getType());
+		observablePhotoList = FXCollections.observableArrayList(photoList);
 		observablePhotoList.add(new PhotoProperty(23, "PIEKNE", "nifas", "2312", "C"));
-		
+
 
         // Initialize the person table with the two columns.
     	photoNameColumn.setCellValueFactory(cellData -> cellData.getValue().photoNameProperty());
     	localizationColumn.setCellValueFactory(cellData -> cellData.getValue().localizationProperty());
-    
+
     	photoTable.setItems(observablePhotoList);
-		
+
 	}
-	
+
 
 	/**
-     * Returns the data as an observable list of Persons. 
+     * Returns the data as an observable list of Persons.
      * @return
      */
     public ObservableList<PhotoProperty> getPhotoData() {

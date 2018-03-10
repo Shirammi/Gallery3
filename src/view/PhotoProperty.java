@@ -6,37 +6,40 @@ import javafx.beans.property.StringProperty;
 
 public class PhotoProperty {
 
-	private SimpleIntegerProperty id;
-	private SimpleStringProperty title ;
-	private SimpleStringProperty description ;
+	 SimpleIntegerProperty idProperty;
+	 SimpleStringProperty titleProperty ;
+	 SimpleStringProperty description ;
+	 String title;
+	 int id;
+
 //	private SimpleStringProperty classified ;
 //	private SimpleStringProperty path ;
-//	
-	
-	
-	
+//
+
+
+
 	public PhotoProperty(int id, String photoName, String localization,
 			String  classified, String  path) {
 		super();
-		this.id = new SimpleIntegerProperty( id);
-		this.title = new SimpleStringProperty( photoName);
+		this.idProperty = new SimpleIntegerProperty( id);
+		this.titleProperty = new SimpleStringProperty( photoName);
 		this.description = new SimpleStringProperty( localization);
 //		this.classified = new SimpleStringProperty( classified);
 //		this.path = new SimpleStringProperty( path);
 	}
-	
-	
+
+
 	public int getId() {
-		return id.get();
+		return idProperty.get();
 	}
 	public void setId(int id) {
-		this.id.set(id);
+		this.idProperty.set(id);
 	}
 	public String getPhotoName() {
-		return title.get();
+		return titleProperty.get();
 	}
 	public void setTitle(String photoName) {
-		this.title.set(photoName);
+		this.titleProperty.set(photoName);
 	}
 	public String getDescription() {
 		return description.get();
@@ -59,14 +62,15 @@ public class PhotoProperty {
 
 
 	public StringProperty photoNameProperty() {
-		return title;
+		return new SimpleStringProperty( title);
 	}
 
 
 	public StringProperty localizationProperty() {
-		return description;
+		// TODO
+		return new SimpleStringProperty() ;
 	}
-	
-	
-		
+
+
+
 }
