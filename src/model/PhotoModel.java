@@ -17,11 +17,31 @@ public class PhotoModel {
 		    ResultSet rs = st.executeQuery("SELECT * FROM interwar");
 		    while (rs.next()){
 		        int id = rs.getInt("idinterwar");
+		        int pairID = rs.getInt("idcontemp");
 		        String photoName = rs.getString("pname");
 		        String localization = rs.getString("localization");
 		        String classified = rs.getString("classified");
 		        String path = rs.getString("path");
-		        toReturn.add(new Photo(id, photoName, classified));
+
+
+		        ResultSet langSet = st.executeQuery("SELECT * FROM languages WHERE idPhoto = " + Integer.toString(id) + " ;");
+		        langSet.next();
+		        /// get metadata for colums name
+		        ResultSetMetaData rsmd = langSet.getMetaData();
+		        String name = rsmd.getColumnName(1);
+		        System.out.println(name);
+		        final int columnCount = rsmd.getColumnCount();
+
+		        ///iterate over columns
+		        final ArrayList<String> langList = new ArrayList<String>();
+
+		        for (int column = 1; column <= columnCount; ++column)
+		        {
+		            final Object value = langSet.getObject(column);
+		            langList.add(String.valueOf(value));
+		        }
+
+		        toReturn.add(new Photo(id, pairID, photoName, localization, classified, path, langList));
 		    }
 
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {

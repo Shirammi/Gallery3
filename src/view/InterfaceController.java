@@ -1,7 +1,6 @@
 package view;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
@@ -42,9 +41,9 @@ public class InterfaceController {
 	void initialize() {
 		Gson gson = new Gson();
 		String json = galleryControler.showPhotos();
-		ArrayList<PhotoProperty> photoList = gson.fromJson(galleryControler.showPhotos(), new TypeToken<ArrayList<PhotoProperty>>(){}.getType());
+		ArrayList<PhotoProperty> photoList = gson.fromJson(json, new TypeToken<ArrayList<PhotoProperty>>(){}.getType());
 		observablePhotoList = FXCollections.observableArrayList(photoList);
-		observablePhotoList.add(new PhotoProperty(23, "PIEKNE", "nifas", "2312", "C"));
+		observablePhotoList.add(new PhotoProperty(23, 15, "PIEKNE", "ogorka 2", "2312", "C:/sadfa.jpg"));
 
 
         // Initialize the person table with the two columns.

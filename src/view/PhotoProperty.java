@@ -6,11 +6,13 @@ import javafx.beans.property.StringProperty;
 
 public class PhotoProperty {
 
-	 SimpleIntegerProperty idProperty;
-	 SimpleStringProperty titleProperty ;
-	 SimpleStringProperty description ;
-	 String title;
+
 	 int id;
+	 int pairID;
+	 String photoName;
+	 String localization;
+	 String classified;
+	 String path;
 
 //	private SimpleStringProperty classified ;
 //	private SimpleStringProperty path ;
@@ -18,34 +20,33 @@ public class PhotoProperty {
 
 
 
-	public PhotoProperty(int id, String photoName, String localization,
+	public PhotoProperty(int id, int pairID, String photoName, String localization,
 			String  classified, String  path) {
 		super();
-		this.idProperty = new SimpleIntegerProperty( id);
-		this.titleProperty = new SimpleStringProperty( photoName);
-		this.description = new SimpleStringProperty( localization);
-//		this.classified = new SimpleStringProperty( classified);
-//		this.path = new SimpleStringProperty( path);
+		this.photoName = photoName;
+		this.localization = localization;
+		this.classified = classified;
+		this.path =  path;
 	}
 
 
 	public int getId() {
-		return idProperty.get();
+		return id;
 	}
 	public void setId(int id) {
-		this.idProperty.set(id);
+		this.id = id;
 	}
 	public String getPhotoName() {
-		return titleProperty.get();
+		return photoName;
 	}
-	public void setTitle(String photoName) {
-		this.titleProperty.set(photoName);
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
 	}
-	public String getDescription() {
-		return description.get();
+	public String getLocalization() {
+		return localization;
 	}
-	public void setDescription(String localization) {
-		this.description.set(localization);
+	public void setLocalization(String localization) {
+		this.localization = localization;
 	}
 //	public String getClassified() {
 //		return classified.get();
@@ -62,15 +63,12 @@ public class PhotoProperty {
 
 
 	public StringProperty photoNameProperty() {
-		return new SimpleStringProperty( title);
+		return new SimpleStringProperty(photoName);
 	}
 
 
 	public StringProperty localizationProperty() {
-		// TODO
-		return new SimpleStringProperty() ;
+		return new SimpleStringProperty(localization) ;
 	}
-
-
 
 }
