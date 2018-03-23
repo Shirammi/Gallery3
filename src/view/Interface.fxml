@@ -76,7 +76,7 @@
                         <TableColumn fx:id="localizationColumn" prefWidth="57.0" text="Adres" />
                         <TableColumn prefWidth="76.0" text="Typ LL" />
                         <TableColumn text="Status budynku" />
-                      <TableColumn prefWidth="96.0" text="Języki" />
+                      	<TableColumn fx:id="languagesColumn" prefWidth="96.0" text="Języki" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

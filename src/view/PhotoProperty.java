@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -13,7 +15,7 @@ public class PhotoProperty {
 	 String localization;
 	 String classified;
 	 String path;
-
+	 ArrayList<String> languages;
 //	private SimpleStringProperty classified ;
 //	private SimpleStringProperty path ;
 //
@@ -21,12 +23,13 @@ public class PhotoProperty {
 
 
 	public PhotoProperty(int id, int pairID, String photoName, String localization,
-			String  classified, String  path) {
+			String  classified, String  path, ArrayList<String> languages) {
 		super();
 		this.photoName = photoName;
 		this.localization = localization;
 		this.classified = classified;
 		this.path =  path;
+		this.languages = languages;
 	}
 
 
@@ -69,6 +72,10 @@ public class PhotoProperty {
 
 	public StringProperty localizationProperty() {
 		return new SimpleStringProperty(localization) ;
+	}
+
+	public StringProperty languagesProperty(){
+		return new SimpleStringProperty(this.languages.toString());
 	}
 
 }

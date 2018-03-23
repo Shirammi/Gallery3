@@ -27,6 +27,8 @@ public class InterfaceController {
     private TableColumn<PhotoProperty, String> photoNameColumn;
     @FXML
     private TableColumn<PhotoProperty, String> localizationColumn;
+    @FXML
+    private TableColumn<PhotoProperty, String> languagesColumn;
 
 
 
@@ -43,12 +45,13 @@ public class InterfaceController {
 		String json = galleryControler.showPhotos();
 		ArrayList<PhotoProperty> photoList = gson.fromJson(json, new TypeToken<ArrayList<PhotoProperty>>(){}.getType());
 		observablePhotoList = FXCollections.observableArrayList(photoList);
-		observablePhotoList.add(new PhotoProperty(23, 15, "PIEKNE", "ogorka 2", "2312", "C:/sadfa.jpg"));
+		observablePhotoList.add(new PhotoProperty(23, 15, "PIEKNE", "ogorka 2", "2312", "C:/sadfa.jpg", new ArrayList<String> ()));
 
 
         // Initialize the person table with the two columns.
     	photoNameColumn.setCellValueFactory(cellData -> cellData.getValue().photoNameProperty());
     	localizationColumn.setCellValueFactory(cellData -> cellData.getValue().localizationProperty());
+    	languagesColumn.setCellValueFactory(cellData -> cellData.getValue().languagesProperty());
 
     	photoTable.setItems(observablePhotoList);
 
