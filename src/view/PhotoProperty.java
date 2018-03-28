@@ -75,7 +75,7 @@ public class PhotoProperty {
 	}
 
 	public StringProperty languagesProperty(){
-		return new SimpleStringProperty(this.languages.toString());
+		return new SimpleStringProperty(String.join(", ", this.languages) );
 	}
 
 }

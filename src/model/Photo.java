@@ -28,7 +28,5 @@ public class Photo {
 		this.languages = langs;
 	}
 
-
-
-
 }
+
