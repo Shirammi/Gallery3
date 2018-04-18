@@ -7,7 +7,7 @@ import javafx.scene.control.TableView;
 public class PhotoOverviewController {
 	@FXML
 	private TableView<PhotoProperty> photoTable;
-	
+
     @FXML
     private TableColumn<PhotoProperty, String> photoNameColumn;
     @FXML
@@ -33,11 +33,20 @@ public class PhotoOverviewController {
         // Initialize the person table with the two columns.
     	photoNameColumn.setCellValueFactory(cellData -> cellData.getValue().photoNameProperty());
     	localizationColumn.setCellValueFactory(cellData -> cellData.getValue().localizationProperty());
+
+
+    	photoTable.getSelectionModel().selectedItemProperty().addListener(
+    			(observable, oldValue, newValue) -> showPhotoDetails(newValue));
     }
 
-    /**
+    private void showPhotoDetails(PhotoProperty photo) {
+
+
+	}
+
+	/**
      * Is called by the main application to give a reference back to itself.
-     * 
+     *
      * @param mainApp
      */
     public void setMainApp(InterfaceController mainApp) {
@@ -46,6 +55,6 @@ public class PhotoOverviewController {
         // Add observable list data to the table
         photoTable.setItems(interfaceController.getPhotoData());
     }
-    
-    
+
+
 }

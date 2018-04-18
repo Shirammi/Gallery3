@@ -14,9 +14,6 @@ public class Photo {
 
 
 
-
-
-
 	public Photo(int id, int pairID, String photoName, String localization, String classified, String path, ArrayList<String> langs) {
 		super();
 		this.id = id;

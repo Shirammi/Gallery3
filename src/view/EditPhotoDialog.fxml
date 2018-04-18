@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="517.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EditPhotoDialogController">
+   <children>
+      <GridPane alignment="CENTER" layoutX="-195.0" layoutY="-57.0" prefHeight="353.0" prefWidth="321.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="139.0" minHeight="0.0" prefHeight="33.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="163.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="197.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="186.0" minHeight="0.0" prefHeight="69.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="159.0" text="Adres" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="159.0" text="Języki" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="159.0" text="ID drugiego zdjęcia" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="159.0" text="Klasyfikacja" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="159.0" text="Typ zdjęcia" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="159.0" text="Ścieżka" GridPane.rowIndex="6" />
+            <TextField GridPane.columnIndex="1" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Zapisz" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" text="Anuluj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <RadioButton mnemonicParsing="false" text="Contemporary" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <RadioButton mnemonicParsing="false" text="Interwar" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+         </children>
+      </GridPane>
+      <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="159.0" text="Nazwa zdjecia" />
+   </children>
+</AnchorPane>

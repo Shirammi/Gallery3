@@ -78,4 +78,22 @@ public class PhotoProperty {
 		return new SimpleStringProperty(String.join(", ", this.languages) );
 	}
 
+
+	public void setClassification(String text) {
+		// TODO Auto-generated method stub
+
+	}
+
+
+	public void setLanguages(String text) {
+		// TODO Auto-generated method stub
+
+	}
+
+
+	public void setPath(String text) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
