@@ -44,7 +44,7 @@ public class PhotoModel {
 				}
 				langSet.close();
 
-				toReturn.add(new Photo(id, pairID, photoName, localization, classified, path, langList));
+				toReturn.add(new Photo(id, pairID, photoName, localization, classified, path, langList, "interwar"));
 			}
 			rs.close();
 
@@ -80,7 +80,7 @@ public class PhotoModel {
 				}
 				langSet.close();
 
-				toReturn.add(new Photo(id, pairID, photoName, localization, classified, path, langList));
+				toReturn.add(new Photo(id, pairID, photoName, localization, classified, path, langList, "contemporary"));
 			}
 			rs.close();
 

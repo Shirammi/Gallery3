@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="view.PhotoDetailsController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PhotoDetailsController">
    <children>
       <SplitPane dividerPositions="0.5" prefHeight="400.0" prefWidth="600.0">
         <items>
@@ -16,12 +15,14 @@
                <children>
                   <Text fx:id="title1" layoutX="137.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                   <ImageView fx:id="imageView1" fitHeight="150.0" fitWidth="200.0" layoutX="48.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="editButton1" layoutX="130.0" layoutY="359.0" mnemonicParsing="false" text="Edit" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <Text fx:id="title2" layoutX="137.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                   <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="200.0" layoutX="48.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="editButton2" layoutX="122.0" layoutY="359.0" mnemonicParsing="false" text="Edit" />
                </children>
             </AnchorPane>
         </items>

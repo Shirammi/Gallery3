@@ -48,7 +48,7 @@ public class InterfaceController {
 		}.getType());
 		observablePhotoList = FXCollections.observableArrayList(photoList);
 		observablePhotoList
-				.add(new PhotoProperty(23, 15, "PIEKNE", "ogorka 2", "2312", "C:/sadfa.jpg", new ArrayList<String>()));
+				.add(new PhotoProperty(23, 15, "PIEKNE", "ogorka 2", "2312", "C:/sadfa.jpg", new ArrayList<String>(), "contemporary"));
 
 		// Initialize the person table with the two columns.
 		photoNameColumn.setCellValueFactory(cellData -> cellData.getValue().photoNameProperty());
@@ -74,7 +74,7 @@ public class InterfaceController {
 	private boolean showPhotoDetails(PhotoProperty photo) {
 
 		//find second photo
-		PhotoProperty photo2 = observablePhotoList.stream().filter(a -> a.id == photo.pairID).findFirst().get();
+		PhotoProperty photo2 = observablePhotoList.stream().filter(a -> a.id == photo.pairID && a.times != photo.times ).findFirst().get();
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
@@ -98,6 +98,14 @@ public class InterfaceController {
 			// Show the dialog and wait until the user closes it
 			dialogStage.showAndWait();
 
+			//check if any changes were made
+			if(controller.isPhoto1Changed()){
+			//	galleryControler.updatePhoto(photo);
+			}
+			if(controller.isPhoto2Changed()){
+			//	galleryControler.updatePhoto(photo2);
+			}
+
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -106,34 +114,5 @@ public class InterfaceController {
 
 	}
 
-	public boolean showPhotoEditDialog(PhotoProperty photo) {
-	    try {
-	        // Load the fxml file and create a new stage for the popup dialog.
-	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(InterfaceController.class.getResource("EditPhotoDialog.fxml"));
-	        AnchorPane page = (AnchorPane) loader.load();
-
-	        // Create the dialog Stage.
-	        Stage dialogStage = new Stage();
-	        dialogStage.setTitle("Edit Person");
-	        dialogStage.initModality(Modality.WINDOW_MODAL);
-
-	        Scene scene = new Scene(page);
-	        dialogStage.setScene(scene);
-
-	        // Set the person into the controller.
-	        EditPhotoDialogController controller = loader.getController();
-	        controller.setDialogStage(dialogStage);
-	        controller.setPhoto(photo);
-
-	        // Show the dialog and wait until the user closes it
-	        dialogStage.showAndWait();
-
-	        return controller.isOkClicked();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	        return false;
-	    }
-	}
 
 }

@@ -16,6 +16,7 @@ public class PhotoProperty {
 	 String classified;
 	 String path;
 	 ArrayList<String> languages;
+	 String times;
 //	private SimpleStringProperty classified ;
 //	private SimpleStringProperty path ;
 //
@@ -23,13 +24,14 @@ public class PhotoProperty {
 
 
 	public PhotoProperty(int id, int pairID, String photoName, String localization,
-			String  classified, String  path, ArrayList<String> languages) {
+			String  classified, String  path, ArrayList<String> languages, String times) {
 		super();
 		this.photoName = photoName;
 		this.localization = localization;
 		this.classified = classified;
 		this.path =  path;
 		this.languages = languages;
+		this.times = times;
 	}
 
 

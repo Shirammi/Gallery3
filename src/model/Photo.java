@@ -11,10 +11,10 @@ public class Photo {
 	 private String classified;
 	 private String path;
 	 private ArrayList<String> languages;
+	 private String times;
 
 
-
-	public Photo(int id, int pairID, String photoName, String localization, String classified, String path, ArrayList<String> langs) {
+	public Photo(int id, int pairID, String photoName, String localization, String classified, String path, ArrayList<String> langs, String times) {
 		super();
 		this.id = id;
 		this.pairID = pairID;
@@ -23,6 +23,7 @@ public class Photo {
 		this.classified = classified;
 		this.path = path;
 		this.languages = langs;
+		this.times = times;
 	}
 
 }
