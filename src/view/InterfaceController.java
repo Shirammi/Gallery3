@@ -13,8 +13,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Photo;
@@ -32,6 +36,21 @@ public class InterfaceController {
 	private TableColumn<PhotoProperty, String> localizationColumn;
 	@FXML
 	private TableColumn<PhotoProperty, String> languagesColumn;
+	@FXML
+	private Text photoNameInfo;
+	@FXML
+	private Text addressInfo;
+	@FXML
+	private Text llTypeInfo;
+	@FXML
+	private Text unitStatusInfo;
+	@FXML
+	private Text languagesInfo;
+	@FXML
+	private Text sourceInfo;
+	@FXML
+	private ImageView viewInfo;
+
 
 	private GalleryController galleryControler;
 
@@ -56,9 +75,29 @@ public class InterfaceController {
 		languagesColumn.setCellValueFactory(cellData -> cellData.getValue().languagesProperty());
 
 		photoTable.getSelectionModel().selectedItemProperty()
-				.addListener((observable, oldValue, newValue) -> showPhotoDetails(newValue));
+				.addListener((observable, oldValue, newValue) -> showPhotoInfo(newValue));
+
+		photoTable.setRowFactory( tv -> {
+		    TableRow<PhotoProperty> row = new TableRow<>();
+		    row.setOnMouseClicked(event -> {
+		        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+		        	PhotoProperty rowData = row.getItem();
+		        	showPhotoDetails(rowData);
+		        }
+		    });
+		    return row ;
+		});
 
 		photoTable.setItems(observablePhotoList);
+
+	}
+
+	private void showPhotoInfo(PhotoProperty newValue) {
+		this.photoNameInfo.setText(newValue.photoName);
+
+		Image image1 = new Image("file:" + newValue.path);
+		this.viewInfo.setImage(image1);
+
 
 	}
 
