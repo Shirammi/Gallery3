@@ -93,6 +93,90 @@ public class PhotoModel {
 	}
 
 	public void savePhoto(Photo photo) {
-		throw new UnsupportedOperationException();
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn = DriverManager.getConnection(DB_URL, "root", "");
+			Statement st = conn.createStatement();
+
+			String maxIdQuery = "";
+			String query = "INSERT INTO ";
+			query += photo.getTimes() + " ";
+			if (photo.getTimes() == "interwar"){
+				query += "(idcontemp, ";
+				maxIdQuery = "SELECT MAX(idinterwar) as maxid  FROM interwar";
+			}
+			if (photo.getTimes() == "contemporary"){
+				query += "(idinterwar, ";
+				maxIdQuery = "SELECT MAX(idcontemporary) as maxid  FROM contemporary";
+			}
+			query += "pname, localization, classified, path) VALUES (";
+			query += photo.getPairID() + ", ";
+			query += photo.getPhotoName() + ", ";
+			query += photo.getLocalization() + ", ";
+			query += photo.getClassified() + ", ";
+			query += photo.getPath() + "); ";
+
+
+
+			st.executeQuery(query);
+
+			ResultSet idSet = st.executeQuery(maxIdQuery);
+			idSet.next();
+			int maxID = idSet.getInt("maxid");
+
+			String query2 = "INSERT INTO languages VALUES (idPhoto, " + String.join(", ", photo.getLanguages()) + ") VALUES (" + maxID + ", ";
+			for (int i = 0; i < photo.getLanguages().size() - 1; i++ ){
+				query2 += "1, ";
+			}
+			query2 += "1)";
+
+			st.executeQuery(query2);
+
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void updatePhoto(Photo photo) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn = DriverManager.getConnection(DB_URL, "root", "");
+			Statement st = conn.createStatement();
+
+			String query = "UPDATE ";
+			query += photo.getTimes() + " SET";
+			if (photo.getTimes() == "interwar"){
+				//query += "idinterwar =  " + photo.getId() + ", ";
+				query += "idcontemp =  " + photo.getPairID() + ", ";
+			}
+			if (photo.getTimes() == "contemporary"){
+				//query += "idcontemporary =  " + photo.getId() + ", ";
+				query += "idinterwar =  " + photo.getPairID() + ", ";
+			}
+
+			query += "pname =  " + photo.getPhotoName() + ", ";
+			query += "localization =  " + photo.getLocalization() + ", ";
+			query += "path =  " + photo.getPath() + ", ";
+			query += "classified =  " + photo.getClassified() + " ";
+			query += "WHERE id = " + photo.getId();
+
+			st.executeQuery(query);
+
+			String query2 = "UPDATE languages SET ";
+			for (String s : photo.getLanguages()){
+				query2 += s + " = 1, ";
+			}
+			query2 = query2.substring(0, query2.length() - 1);
+			query2 += "WHERE idPhoto = " + photo.getId();
+
+			st.executeQuery(query2);
+
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

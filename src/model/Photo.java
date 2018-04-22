@@ -5,7 +5,47 @@ import java.util.ArrayList;
 public class Photo {
 
 	 private int id;
-	 private int pairID;
+	 public int getId() {
+		return id;
+	}
+
+
+	public int getPairID() {
+		return pairID;
+	}
+
+
+	public String getPhotoName() {
+		return photoName;
+	}
+
+
+	public String getLocalization() {
+		return localization;
+	}
+
+
+	public String getClassified() {
+		return classified;
+	}
+
+
+	public String getPath() {
+		return path;
+	}
+
+
+	public ArrayList<String> getLanguages() {
+		return languages;
+	}
+
+
+	public String getTimes() {
+		return times;
+	}
+
+
+	private int pairID;
 	 private String photoName;
 	 private String localization;
 	 private String classified;
