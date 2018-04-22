@@ -27,6 +27,7 @@ public class PhotoProperty {
 			String  classified, String  path, ArrayList<String> languages, String times) {
 		super();
 		this.photoName = photoName;
+		this.pairID = pairID;
 		this.localization = localization;
 		this.classified = classified;
 		this.path =  path;
@@ -41,11 +42,21 @@ public class PhotoProperty {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public int getPairID(){
+		return pairID;
+	}
+	
+	public void setPairID(){
+		this.pairID = pairID;
+	}
+	
 	public String getPhotoName() {
 		return photoName;
 	}
 	public void setPhotoName(String photoName) {
 		this.photoName = photoName;
+		
 	}
 	public String getLocalization() {
 		return localization;

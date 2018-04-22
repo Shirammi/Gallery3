@@ -2,9 +2,12 @@ package view;
 
 
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,7 +26,29 @@ public class EditPhotoDialogController {
     private TextField photoClassificationField;
     @FXML
     private TextField pathField;
-
+    @FXML
+    private CheckMenuItem polish; 
+    @FXML
+    private CheckMenuItem english; 
+    @FXML
+    private CheckMenuItem german; 
+    @FXML
+    private CheckMenuItem french;
+    @FXML
+    private CheckMenuItem spanish; 
+    @FXML
+    private CheckMenuItem italian; 
+    @FXML
+    private CheckMenuItem chineese; 
+    @FXML
+    private CheckMenuItem japaneese;
+    @FXML
+    private CheckMenuItem arab; 
+    @FXML
+    private CheckMenuItem russian;
+    @FXML
+    private CheckMenuItem yddish;
+    
     private Stage dialogStage;
     private PhotoProperty photo;
     private boolean okClicked = false;
@@ -51,20 +76,19 @@ public class EditPhotoDialogController {
     /**
      * Sets the photo to be edited in the dialog.
      *
-     * @param person
+     * @param photo
      */
     public void setPhoto(PhotoProperty photo) {
         this.photo = photo;
 
          photoNameField.setText(photo.getPhotoName());
-       //  photoLanguagesField.setText(photo.get);
-//       secondPhotoIDField;
+         System.out.println(photo.languages);
+         secondPhotoIDField.setText(String.valueOf(photo.getPairID()));
          photoClassificationField.setText(photo.getClassified());
          pathField.setText(photo.getPath());
-//        postalCodeField.setText(Integer.toString(person.getPostalCode()));
-//        cityField.setText(person.getCity());
-//        birthdayField.setText(DateUtil.format(person.getBirthday()));
-//        birthdayField.setPromptText("dd.mm.yyyy");
+         photoAdressField.setText(photo.getLocalization());
+         checkmenuChoice(photo.languages);
+
     }
 
 
@@ -72,6 +96,7 @@ public class EditPhotoDialogController {
      * Returns true if the user clicked OK, false otherwise.
      *
      * @return
+     * 
      */
     public boolean isOkClicked() {
         return okClicked;
@@ -95,6 +120,46 @@ public class EditPhotoDialogController {
         }
     }
 
+    private void checkmenuChoice( ArrayList<String> languages){
+    	
+    	for (int i =0; i<(languages.size()); i++){
+    		if (languages.get(i).equals("polish")){
+    				polish.setSelected(true);
+    		}
+    		if (languages.get(i).equals("english")){
+				english.setSelected(true);
+    		}
+    		if (languages.get(i).equals("german")){
+				german.setSelected(true);
+    		}
+    		if (languages.get(i).equals("french")){
+				french.setSelected(true);
+    		}
+    		if (languages.get(i).equals("spanish")){
+				spanish.setSelected(true);
+    		}
+    		if (languages.get(i).equals("italian")){
+				italian.setSelected(true);
+    		}
+    		if (languages.get(i).equals("chineese")){
+				chineese.setSelected(true);
+    		}
+    		if (languages.get(i).equals("japaneese")){
+				japaneese.setSelected(true);
+    		}
+    		if (languages.get(i).equals("arab")){
+				arab.setSelected(true);
+    		}
+    		
+    		if (languages.get(i).equals("russian")){
+				russian.setSelected(true);
+    		}
+    		if (languages.get(i).equals("yddish")){
+				yddish.setSelected(true);
+    		}
+    	}
+    }
+    
     /**
      * Called when the user clicks cancel.
      */
@@ -104,6 +169,8 @@ public class EditPhotoDialogController {
     }
 
 
+    
+    
     /**
      * Validates the user input in the text fields.
      *
@@ -113,32 +180,32 @@ public class EditPhotoDialogController {
         String errorMessage = "";
 
         if (photoNameField.getText() == null || photoNameField.getText().length() == 0) {
-            errorMessage += "No valid first name!\n";
+            errorMessage += "No valid name!\n";
         }
         if (photoAdressField.getText() == null || photoAdressField.getText().length() == 0) {
-            errorMessage += "No valid last name!\n";
+            errorMessage += "No valid address!\n";
         }
         if (photoLanguagesField.getText() == null || photoLanguagesField.getText().length() == 0) {
-            errorMessage += "No valid street!\n";
+            errorMessage += "No valid languages!\n";
         }
 
         if (secondPhotoIDField.getText() == null || secondPhotoIDField.getText().length() == 0) {
-            errorMessage += "No valid postal code!\n";
+            errorMessage += "No valid second photo id!\n";
         } else {
             // try to parse the postal code into an int.
             try {
                 Integer.parseInt(secondPhotoIDField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "No valid postal code (must be an integer)!\n";
+                errorMessage += "No valid second photo id (must be an integer)!\n";
             }
         }
 
         if (photoClassificationField.getText() == null || photoClassificationField.getText().length() == 0) {
-            errorMessage += "No valid city!\n";
+            errorMessage += "No valid classification!\n";
         }
 
         if (pathField.getText() == null || pathField.getText().length() == 0) {
-            errorMessage += "No valid birthday!\n";
+            errorMessage += "No valid path!\n";
         }
         if (errorMessage.length() == 0) {
             return true;

@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +14,7 @@
 
 <AnchorPane prefHeight="517.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EditPhotoDialogController">
    <children>
-      <GridPane alignment="CENTER" layoutX="-195.0" layoutY="-57.0" prefHeight="353.0" prefWidth="321.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+      <GridPane alignment="CENTER" layoutX="-1.0" prefHeight="353.0" prefWidth="321.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
@@ -55,7 +57,6 @@
                </GridPane.margin></Label>
             <TextField fx:id="photoNameField" GridPane.columnIndex="1" />
             <TextField fx:id="photoAdressField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="photoLanguagesField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="secondPhotoIDField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="photoClassificationField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="pathField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -63,6 +64,20 @@
             <Button mnemonicParsing="false" text="Anuluj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
             <RadioButton mnemonicParsing="false" text="Contemporary" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <RadioButton mnemonicParsing="false" text="Interwar" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <MenuButton mnemonicParsing="false" text="Languages" GridPane.columnIndex="1" GridPane.rowIndex="2">
+              <items>
+                  <CheckMenuItem fx:id="polish" mnemonicParsing="false" text="polish" />
+                  <CheckMenuItem fx:id="english" mnemonicParsing="false" text="english" />
+                  <CheckMenuItem fx:id="german" mnemonicParsing="false" text="german" />
+                  <CheckMenuItem fx:id="french" mnemonicParsing="false" text="french" />
+                  <CheckMenuItem fx:id="spanish" mnemonicParsing="false" text="spanish" />
+                  <CheckMenuItem fx:id="italian" mnemonicParsing="false" text="italian" />
+                  <CheckMenuItem fx:id="chineese" mnemonicParsing="false" text="chineese" />
+                  <CheckMenuItem fx:id="japaneese" mnemonicParsing="false" text="japaneese" />
+                  <CheckMenuItem fx:id="arab" mnemonicParsing="false" text="arab" />
+                  <CheckMenuItem fx:id="russian" mnemonicParsing="false" text="russian" />
+              </items>
+            </MenuButton>
          </children>
       </GridPane>
       <Label alignment="CENTER" layoutX="21.0" layoutY="10.0" text="Nazwa zdjecia" AnchorPane.leftAnchor="40.0" />
