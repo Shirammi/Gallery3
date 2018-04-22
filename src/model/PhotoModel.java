@@ -118,7 +118,7 @@ public class PhotoModel {
 
 
 
-			st.executeQuery(query);
+			st.executeUpdate(query);
 
 			ResultSet idSet = st.executeQuery(maxIdQuery);
 			idSet.next();
@@ -130,7 +130,7 @@ public class PhotoModel {
 			}
 			query2 += "1)";
 
-			st.executeQuery(query2);
+			st.executeUpdate(query2);
 
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -146,23 +146,24 @@ public class PhotoModel {
 			Statement st = conn.createStatement();
 
 			String query = "UPDATE ";
-			query += photo.getTimes() + " SET";
-			if (photo.getTimes() == "interwar"){
+			query += photo.getTimes() + " SET ";
+			if (photo.getTimes().equals("interwar")){
 				//query += "idinterwar =  " + photo.getId() + ", ";
 				query += "idcontemp =  " + photo.getPairID() + ", ";
 			}
-			if (photo.getTimes() == "contemporary"){
+			if (photo.getTimes().equals("contemporary")){
 				//query += "idcontemporary =  " + photo.getId() + ", ";
 				query += "idinterwar =  " + photo.getPairID() + ", ";
 			}
 
-			query += "pname =  " + photo.getPhotoName() + ", ";
-			query += "localization =  " + photo.getLocalization() + ", ";
-			query += "path =  " + photo.getPath() + ", ";
-			query += "classified =  " + photo.getClassified() + " ";
+			query += "pname =  \"" + photo.getPhotoName() + "\", ";
+			query += "localization =  \"" + photo.getLocalization() + "\", ";
+			query += "path =  \"" + photo.getPath() + "\", ";
+			query += "classified =  \"" + photo.getClassified() + "\" ";
 			query += "WHERE id = " + photo.getId();
 
-			st.executeQuery(query);
+			System.out.println(query);
+			st.executeUpdate(query);
 
 			String query2 = "UPDATE languages SET ";
 			for (String s : photo.getLanguages()){
@@ -171,7 +172,7 @@ public class PhotoModel {
 			query2 = query2.substring(0, query2.length() - 1);
 			query2 += "WHERE idPhoto = " + photo.getId();
 
-			st.executeQuery(query2);
+			st.executeUpdate(query2);
 
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

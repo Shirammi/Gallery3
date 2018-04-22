@@ -105,8 +105,7 @@
                     <columns>
                         <TableColumn fx:id="photoNameColumn" prefWidth="76.0" text="Nazwa" />
                         <TableColumn fx:id="localizationColumn" prefWidth="57.0" text="Adres" />
-                        <TableColumn prefWidth="76.0" text="Typ LL" />
-                        <TableColumn text="Status budynku" />
+                        <TableColumn fx:id="classificationColumn" prefWidth="76.0" text="Typ LL" />
                       	<TableColumn fx:id="languagesColumn" prefWidth="96.0" text="Języki" />
                     </columns>
                      <columnResizePolicy>

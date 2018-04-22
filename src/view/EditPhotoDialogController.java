@@ -27,28 +27,28 @@ public class EditPhotoDialogController {
     @FXML
     private TextField pathField;
     @FXML
-    private CheckMenuItem polish; 
+    private CheckMenuItem polish;
     @FXML
-    private CheckMenuItem english; 
+    private CheckMenuItem english;
     @FXML
-    private CheckMenuItem german; 
+    private CheckMenuItem german;
     @FXML
     private CheckMenuItem french;
     @FXML
-    private CheckMenuItem spanish; 
+    private CheckMenuItem spanish;
     @FXML
-    private CheckMenuItem italian; 
+    private CheckMenuItem italian;
     @FXML
-    private CheckMenuItem chineese; 
+    private CheckMenuItem chineese;
     @FXML
     private CheckMenuItem japaneese;
     @FXML
-    private CheckMenuItem arab; 
+    private CheckMenuItem arab;
     @FXML
     private CheckMenuItem russian;
     @FXML
     private CheckMenuItem yddish;
-    
+
     private Stage dialogStage;
     private PhotoProperty photo;
     private boolean okClicked = false;
@@ -96,7 +96,7 @@ public class EditPhotoDialogController {
      * Returns true if the user clicked OK, false otherwise.
      *
      * @return
-     * 
+     *
      */
     public boolean isOkClicked() {
         return okClicked;
@@ -112,7 +112,7 @@ public class EditPhotoDialogController {
             photo.setPhotoName(photoNameField.getText());
             photo.setLocalization(photoAdressField.getText());
             photo.setClassification(photoClassificationField.getText());
-            photo.setLanguages(photoLanguagesField.getText());
+            //photo.setLanguages(photoLanguagesField.getText());
             photo.setPath(pathField.getText());
 
             okClicked = true;
@@ -121,7 +121,7 @@ public class EditPhotoDialogController {
     }
 
     private void checkmenuChoice( ArrayList<String> languages){
-    	
+
     	for (int i =0; i<(languages.size()); i++){
     		if (languages.get(i).equals("polish")){
     				polish.setSelected(true);
@@ -150,7 +150,7 @@ public class EditPhotoDialogController {
     		if (languages.get(i).equals("arab")){
 				arab.setSelected(true);
     		}
-    		
+
     		if (languages.get(i).equals("russian")){
 				russian.setSelected(true);
     		}
@@ -159,7 +159,7 @@ public class EditPhotoDialogController {
     		}
     	}
     }
-    
+
     /**
      * Called when the user clicks cancel.
      */
@@ -169,8 +169,8 @@ public class EditPhotoDialogController {
     }
 
 
-    
-    
+
+
     /**
      * Validates the user input in the text fields.
      *
@@ -185,9 +185,9 @@ public class EditPhotoDialogController {
         if (photoAdressField.getText() == null || photoAdressField.getText().length() == 0) {
             errorMessage += "No valid address!\n";
         }
-        if (photoLanguagesField.getText() == null || photoLanguagesField.getText().length() == 0) {
-            errorMessage += "No valid languages!\n";
-        }
+//        if (photoLanguagesField.getText() == null || photoLanguagesField.getText().length() == 0) {
+//            errorMessage += "No valid languages!\n";
+//        }
 
         if (secondPhotoIDField.getText() == null || secondPhotoIDField.getText().length() == 0) {
             errorMessage += "No valid second photo id!\n";

@@ -42,21 +42,21 @@ public class PhotoProperty {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public int getPairID(){
 		return pairID;
 	}
-	
+
 	public void setPairID(){
 		this.pairID = pairID;
 	}
-	
+
 	public String getPhotoName() {
 		return photoName;
 	}
 	public void setPhotoName(String photoName) {
 		this.photoName = photoName;
-		
+
 	}
 	public String getLocalization() {
 		return localization;
@@ -101,6 +101,12 @@ public class PhotoProperty {
 	public void setLanguages(String text) {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	public StringProperty classificationProperty() {
+		// TODO Auto-generated method stub
+		return new SimpleStringProperty(classified) ;
 	}
 
 

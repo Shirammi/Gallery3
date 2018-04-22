@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckMenuItem?>
@@ -12,7 +16,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="517.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EditPhotoDialogController">
+<AnchorPane prefHeight="517.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EditPhotoDialogController">
    <children>
       <GridPane alignment="CENTER" layoutX="-1.0" prefHeight="353.0" prefWidth="321.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -61,7 +65,7 @@
             <TextField fx:id="photoClassificationField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="pathField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" onAction="#handleOk" text="Zapisz" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" text="Anuluj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" text="Anuluj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
             <RadioButton mnemonicParsing="false" text="Contemporary" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <RadioButton mnemonicParsing="false" text="Interwar" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
             <MenuButton mnemonicParsing="false" text="Languages" GridPane.columnIndex="1" GridPane.rowIndex="2">

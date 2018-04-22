@@ -37,6 +37,8 @@ public class InterfaceController {
 	@FXML
 	private TableColumn<PhotoProperty, String> languagesColumn;
 	@FXML
+	private TableColumn<PhotoProperty, String> classificationColumn;
+	@FXML
 	private Text photoNameInfo;
 	@FXML
 	private Text addressInfo;
@@ -73,6 +75,7 @@ public class InterfaceController {
 		photoNameColumn.setCellValueFactory(cellData -> cellData.getValue().photoNameProperty());
 		localizationColumn.setCellValueFactory(cellData -> cellData.getValue().localizationProperty());
 		languagesColumn.setCellValueFactory(cellData -> cellData.getValue().languagesProperty());
+		classificationColumn.setCellValueFactory(cellData -> cellData.getValue().classificationProperty());
 
 		photoTable.getSelectionModel().selectedItemProperty()
 				.addListener((observable, oldValue, newValue) -> showPhotoInfo(newValue));
@@ -139,10 +142,10 @@ public class InterfaceController {
 
 			//check if any changes were made
 			if(controller.isPhoto1Changed()){
-			//	galleryControler.updatePhoto(photo);
+				galleryControler.updatePhoto(new Gson().toJson(photo));
 			}
 			if(controller.isPhoto2Changed()){
-			//	galleryControler.updatePhoto(photo2);
+				galleryControler.updatePhoto(new Gson().toJson(photo2));
 			}
 
 			return true;
