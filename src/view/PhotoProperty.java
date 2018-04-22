@@ -53,18 +53,18 @@ public class PhotoProperty {
 	public void setLocalization(String localization) {
 		this.localization = localization;
 	}
-//	public String getClassified() {
-//		return classified.get();
-//	}
-//	public void setClassified(String classified) {
-//		this.classified.set(classified);
-//	}
-//	public String getPath() {
-//		return path.get();
-//	}
-//	public void setPath(String path) {
-//		this.path.set(path);
-//	}
+	public String getClassified() {
+		return classified;
+	}
+	public void setClassified(String classified) {
+		this.classified = classified;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
+	}
 
 
 	public StringProperty photoNameProperty() {
@@ -93,9 +93,9 @@ public class PhotoProperty {
 	}
 
 
-	public void setPath(String text) {
+//	public void setPath(String text) {
 		// TODO Auto-generated method stub
 
-	}
+//	}
 
 }

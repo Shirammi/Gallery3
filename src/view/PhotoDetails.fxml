@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PhotoDetailsController">
+<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PhotoDetailsController">
    <children>
-      <SplitPane dividerPositions="0.5" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.5" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="165.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="160.0">
                <children>
-                  <Text fx:id="title1" layoutX="137.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <ImageView fx:id="imageView1" fitHeight="150.0" fitWidth="200.0" layoutX="48.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="editButton1" layoutX="130.0" layoutY="359.0" mnemonicParsing="false" text="Edit" />
+                  <Text fx:id="title1" layoutX="137.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text2" />
+                  <ImageView fx:id="imageView1" depthTest="DISABLE" fitHeight="200.0" fitWidth="300.0" layoutX="48.0" layoutY="41.0" nodeOrientation="INHERIT" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="41.0" />
+                  <Button fx:id="editButton1" layoutX="121.0" layoutY="359.0" mnemonicParsing="false" text="Edit" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="121.0" AnchorPane.rightAnchor="138.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="160.0">
                <children>
                   <Text fx:id="title2" layoutX="137.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="200.0" layoutX="48.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="editButton2" layoutX="122.0" layoutY="359.0" mnemonicParsing="false" text="Edit" />
+                  <ImageView fx:id="imageView2" fitHeight="200.0" fitWidth="300.0" layoutX="48.0" layoutY="49.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="41.0" />
+                  <Button fx:id="editButton2" layoutX="122.0" layoutY="359.0" mnemonicParsing="false" text="Edit" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="137.0" />
                </children>
             </AnchorPane>
         </items>

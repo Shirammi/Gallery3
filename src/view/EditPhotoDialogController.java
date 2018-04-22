@@ -1,10 +1,11 @@
 package view;
 
-import java.awt.TextField;
+
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class EditPhotoDialogController {
@@ -55,9 +56,11 @@ public class EditPhotoDialogController {
     public void setPhoto(PhotoProperty photo) {
         this.photo = photo;
 
-//        firstNameField.setText(person.getFirstName());
-//        lastNameField.setText(person.getLastName());
-//        streetField.setText(person.getStreet());
+         photoNameField.setText(photo.getPhotoName());
+       //  photoLanguagesField.setText(photo.get);
+//       secondPhotoIDField;
+         photoClassificationField.setText(photo.getClassified());
+         pathField.setText(photo.getPath());
 //        postalCodeField.setText(Integer.toString(person.getPostalCode()));
 //        cityField.setText(person.getCity());
 //        birthdayField.setText(DateUtil.format(person.getBirthday()));
