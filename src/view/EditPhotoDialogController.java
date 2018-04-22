@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -48,6 +49,10 @@ public class EditPhotoDialogController {
     private CheckMenuItem russian;
     @FXML
     private CheckMenuItem yddish;
+    @FXML
+    private RadioButton contemporary;
+    @FXML
+    private RadioButton interwar;
 
     private Stage dialogStage;
     private PhotoProperty photo;
@@ -87,7 +92,8 @@ public class EditPhotoDialogController {
          photoClassificationField.setText(photo.getClassified());
          pathField.setText(photo.getPath());
          photoAdressField.setText(photo.getLocalization());
-         checkmenuChoice(photo.languages);
+         if (! (photo.languages == null))
+        	 checkmenuChoice(photo.languages);
 
     }
 
@@ -112,12 +118,46 @@ public class EditPhotoDialogController {
             photo.setPhotoName(photoNameField.getText());
             photo.setLocalization(photoAdressField.getText());
             photo.setClassification(photoClassificationField.getText());
-            //photo.setLanguages(photoLanguagesField.getText());
+
             photo.setPath(pathField.getText());
+            photo.setPairID(Integer.parseInt(secondPhotoIDField.getText()));
+            if(contemporary.isSelected()){
+            	photo.setTimes("contemporary");}
+            else{
+            	photo.setTimes("interwar");
+            }
+            photo.setLanguages(listLanguages());
 
             okClicked = true;
             dialogStage.close();
         }
+    }
+
+    private ArrayList<String> listLanguages(){
+    	ArrayList<String> toReturn = new ArrayList<>();
+    	if (polish.isSelected())
+    		toReturn.add("polish");
+    	if (english.isSelected())
+    		toReturn.add("english");
+    	if (german.isSelected())
+    		toReturn.add("german");
+    	if (french.isSelected())
+    		toReturn.add("french");
+    	if (spanish.isSelected())
+    		toReturn.add("spanish");
+    	if (chineese.isSelected())
+    		toReturn.add("chineese");
+    	if (japaneese.isSelected())
+    		toReturn.add("japaneese");
+    	if (russian.isSelected())
+    		toReturn.add("russian");
+    	if (italian.isSelected())
+    		toReturn.add("italian");
+    	if (arab.isSelected())
+    		toReturn.add("arab");
+//    	if (yddish.isSelected())
+//    		toReturn.add("yddish");
+    	return toReturn;
     }
 
     private void checkmenuChoice( ArrayList<String> languages){

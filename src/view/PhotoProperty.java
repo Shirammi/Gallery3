@@ -13,7 +13,19 @@ public class PhotoProperty {
 	 int pairID;
 	 String photoName;
 	 String localization;
-	 String classified;
+	 public String getTimes() {
+		return times;
+	}
+
+
+	public void setTimes(String times) {
+		this.times = times;
+	}
+
+
+
+
+	String classified;
 	 String path;
 	 ArrayList<String> languages;
 	 String times;
@@ -47,7 +59,7 @@ public class PhotoProperty {
 		return pairID;
 	}
 
-	public void setPairID(){
+	public void setPairID(int pairID){
 		this.pairID = pairID;
 	}
 
@@ -93,7 +105,7 @@ public class PhotoProperty {
 
 
 	public void setClassification(String text) {
-		// TODO Auto-generated method stub
+		this.classified = text;
 
 	}
 
@@ -107,6 +119,12 @@ public class PhotoProperty {
 	public StringProperty classificationProperty() {
 		// TODO Auto-generated method stub
 		return new SimpleStringProperty(classified) ;
+	}
+
+
+	public void setLanguages(ArrayList<String> listLanguages) {
+		this.languages = listLanguages;
+
 	}
 
 

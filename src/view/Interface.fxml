@@ -118,7 +118,7 @@
       </SplitPane>
       <ButtonBar layoutX="827.0" layoutY="480.0" prefHeight="40.0" prefWidth="238.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="2.0">
         <buttons>
-            <Button mnemonicParsing="false" text="New Picture" />
+            <Button mnemonicParsing="false" onAction="#addPhoto" text="New Picture" />
             <MenuButton minWidth="56.0" mnemonicParsing="false" prefHeight="31.0" text="Load">
               <items>
                 <MenuItem mnemonicParsing="false" text="Contemporary" />
@@ -126,6 +126,7 @@
                   <MenuItem mnemonicParsing="false" text="All" />
               </items>
             </MenuButton>
+            <Button layoutX="78.0" layoutY="18.0" mnemonicParsing="false" onAction="#addPhoto" text="New Picture" />
         </buttons>
       </ButtonBar>
    </children>

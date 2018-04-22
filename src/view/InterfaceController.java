@@ -104,8 +104,44 @@ public class InterfaceController {
 
 	}
 
+	@FXML
+	private void addPhoto(){
+		PhotoProperty photo = new PhotoProperty(0, 0, null, null, null, null, null, null);
+		try {
+			// Load the fxml file and create a new stage for the popup dialog.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PhotoDetailsController.class.getResource("EditPhotoDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+
+			// Create the dialog Stage.
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Edit Photo");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			// Set the photo into the controller.
+			EditPhotoDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setPhoto(photo);
+
+
+			// Show the dialog and wait until the user closes it
+			dialogStage.showAndWait();
+			if (controller.isOkClicked()){
+				galleryControler.createPhoto(new Gson().toJson(photo));
+			};
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+
+	}
+
+
 	/**
-	 * Returns the data as an observable list of Persons.
+	 * Returns the data as an observable list of Photos.
 	 *
 	 * @return
 	 */

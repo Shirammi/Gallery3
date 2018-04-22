@@ -66,8 +66,8 @@
             <TextField fx:id="pathField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" onAction="#handleOk" text="Zapisz" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#handleCancel" text="Anuluj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
-            <RadioButton mnemonicParsing="false" text="Contemporary" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <RadioButton mnemonicParsing="false" text="Interwar" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <RadioButton fx:id="contemporary" mnemonicParsing="false" text="Contemporary" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <RadioButton fx:id="interwar" mnemonicParsing="false" text="Interwar" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
             <MenuButton mnemonicParsing="false" text="Languages" GridPane.columnIndex="1" GridPane.rowIndex="2">
               <items>
                   <CheckMenuItem fx:id="polish" mnemonicParsing="false" text="polish" />
