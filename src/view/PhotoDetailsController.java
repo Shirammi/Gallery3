@@ -43,7 +43,7 @@ public class PhotoDetailsController {
 	}
 
 	public void showPhotos() {
-		title1.setText(photo1.photoName);
+		title1.setText(photo1.getPhotoName());
 		Image image1 = new Image("file:" + photo1.path);
 		imageView1.setImage(image1);
 
@@ -51,7 +51,7 @@ public class PhotoDetailsController {
 			isPhoto1Changed = showPhotoEditDialog(photo1);
 		});
 
-		title2.setText(photo2.photoName);
+		title2.setText(photo2.getPhotoName());
 		Image image2 = new Image("file:" + photo2.path);
 		imageView2.setImage(image2);
 
@@ -76,11 +76,11 @@ public class PhotoDetailsController {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			// Set the person into the controller.
+			// Set the photo into the controller.
 			EditPhotoDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setPhoto(photo);
-
+			controller.disableTimesChoice();
 			// Show the dialog and wait until the user closes it
 			dialogStage.showAndWait();
 			showPhotos();

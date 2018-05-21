@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -63,11 +64,8 @@
             <TextField fx:id="photoAdressField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="secondPhotoIDField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="photoClassificationField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField fx:id="pathField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" onAction="#handleOk" text="Zapisz" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#handleCancel" text="Anuluj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
-            <RadioButton fx:id="contemporary" mnemonicParsing="false" text="Contemporary" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <RadioButton fx:id="interwar" mnemonicParsing="false" text="Interwar" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
             <MenuButton mnemonicParsing="false" text="Languages" GridPane.columnIndex="1" GridPane.rowIndex="2">
               <items>
                   <CheckMenuItem fx:id="polish" mnemonicParsing="false" text="polish" />
@@ -82,6 +80,18 @@
                   <CheckMenuItem fx:id="russian" mnemonicParsing="false" text="russian" />
               </items>
             </MenuButton>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+               <children>
+                  <TextField fx:id="pathField" maxWidth="236.0" prefHeight="25.0" prefWidth="190.0" />
+                  <Button mnemonicParsing="false" onAction="#choosePath" prefHeight="25.0" prefWidth="54.0" text="Select" />
+               </children>
+            </HBox>
+            <RadioButton fx:id="interwar" mnemonicParsing="false" text="interwar" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <toggleGroup>
+                  <ToggleGroup fx:id="ToggleGroup1" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="contemporary" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="contemporary" toggleGroup="$ToggleGroup1" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
          </children>
       </GridPane>
       <Label alignment="CENTER" layoutX="21.0" layoutY="10.0" text="Nazwa zdjecia" AnchorPane.leftAnchor="40.0" />

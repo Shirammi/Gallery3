@@ -168,6 +168,8 @@ public class PhotoModel {
 
 
 			st.executeUpdate(query);
+			System.out.println(query);
+
 
 			String query2 = "UPDATE languages SET ";
 			for (String s : photo.getLanguages()){

@@ -2,6 +2,7 @@ package view;
 
 
 
+import java.io.File;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class EditPhotoDialogController {
@@ -19,8 +21,6 @@ public class EditPhotoDialogController {
     private TextField photoNameField;
     @FXML
     private TextField photoAdressField;
-    @FXML
-    private TextField photoLanguagesField;
     @FXML
     private TextField secondPhotoIDField;
     @FXML
@@ -50,9 +50,9 @@ public class EditPhotoDialogController {
     @FXML
     private CheckMenuItem yddish;
     @FXML
-    private RadioButton contemporary;
-    @FXML
     private RadioButton interwar;
+    @FXML
+    private RadioButton contemporary;
 
     private Stage dialogStage;
     private PhotoProperty photo;
@@ -91,6 +91,16 @@ public class EditPhotoDialogController {
          secondPhotoIDField.setText(String.valueOf(photo.getPairID()));
          photoClassificationField.setText(photo.getClassified());
          pathField.setText(photo.getPath());
+         if (! (photo.getTimes()== null)){
+	         if(photo.getTimes().equals("interwar"))
+	         {
+	        	 interwar.setSelected(true);;
+	         };
+	         if(photo.getTimes().equals("contemporary"))
+	         {
+	        	 contemporary.setSelected(true);;
+	         };
+         }
          photoAdressField.setText(photo.getLocalization());
          if (! (photo.languages == null))
         	 checkmenuChoice(photo.languages);
@@ -121,12 +131,13 @@ public class EditPhotoDialogController {
 
             photo.setPath(pathField.getText());
             photo.setPairID(Integer.parseInt(secondPhotoIDField.getText()));
+
+            photo.setLanguages(listLanguages());
+
             if(contemporary.isSelected()){
             	photo.setTimes("contemporary");}
-            else{
-            	photo.setTimes("interwar");
-            }
-            photo.setLanguages(listLanguages());
+            if(interwar.isSelected()){
+            	photo.setTimes("interwar");}
 
             okClicked = true;
             dialogStage.close();
@@ -208,6 +219,21 @@ public class EditPhotoDialogController {
         dialogStage.close();
     }
 
+    /**
+     * lets choose photo path
+     */
+    @FXML
+    void choosePath(){
+    	FileChooser directoryChooser = new FileChooser();
+    	File selectedDirectory = directoryChooser.showOpenDialog(dialogStage);
+
+    	if(selectedDirectory == null){
+    	     //No Directory selected
+    	}else{
+    	     this.pathField.setText(selectedDirectory.getAbsolutePath());
+    	}
+    }
+
 
 
 
@@ -225,16 +251,27 @@ public class EditPhotoDialogController {
         if (photoAdressField.getText() == null || photoAdressField.getText().length() == 0) {
             errorMessage += "No valid address!\n";
         }
-//        if (photoLanguagesField.getText() == null || photoLanguagesField.getText().length() == 0) {
-//            errorMessage += "No valid languages!\n";
-//        }
+        if (listLanguages().size() == 0 ) {
+            errorMessage += "No valid languages!\n";
+        }
 
         if (secondPhotoIDField.getText() == null || secondPhotoIDField.getText().length() == 0) {
             errorMessage += "No valid second photo id!\n";
         } else {
-            // try to parse the postal code into an int.
+            // try to parse the id into an int.
             try {
-                Integer.parseInt(secondPhotoIDField.getText());
+                int id = Integer.parseInt(secondPhotoIDField.getText());
+                // id restrictions (according to database)
+                if (contemporary.isSelected()){
+                	if (id < 500){
+                		errorMessage += "Interwar sibling photo Id must be greater than or equal to 500";
+                	}
+                }
+                if (interwar.isSelected()){
+                	if (id < 1 || id > 500){
+                		errorMessage += "Contemporary sibling photo Id must be greater than 0 and less than 500";
+                	}
+                }
             } catch (NumberFormatException e) {
                 errorMessage += "No valid second photo id (must be an integer)!\n";
             }
@@ -246,6 +283,9 @@ public class EditPhotoDialogController {
 
         if (pathField.getText() == null || pathField.getText().length() == 0) {
             errorMessage += "No valid path!\n";
+        }
+        if (!interwar.isSelected() && !contemporary.isSelected()){
+        	errorMessage += "No times selected!\n";
         }
         if (errorMessage.length() == 0) {
             return true;
@@ -261,6 +301,14 @@ public class EditPhotoDialogController {
 
             return false;
         }
+    }
+
+    /**
+     * forbids to change photo times
+     */
+    public void disableTimesChoice(){
+    	this.interwar.setDisable(true);
+    	this.contemporary.setDisable(true);
     }
 
 

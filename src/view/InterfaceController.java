@@ -9,6 +9,8 @@ import com.google.gson.reflect.TypeToken;
 import controller.GalleryController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,9 +23,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Photo;
 
 public class InterfaceController {
+	private FilteredList<PhotoProperty> filteredList;
 	@FXML
 	private ObservableList<PhotoProperty> observablePhotoList;
 
@@ -52,6 +54,8 @@ public class InterfaceController {
 	private Text sourceInfo;
 	@FXML
 	private ImageView viewInfo;
+	@FXML
+	private Text idInfo;
 
 
 	private GalleryController galleryControler;
@@ -68,14 +72,17 @@ public class InterfaceController {
 		ArrayList<PhotoProperty> photoList = gson.fromJson(json, new TypeToken<ArrayList<PhotoProperty>>() {
 		}.getType());
 		observablePhotoList = FXCollections.observableArrayList(photoList);
-		observablePhotoList
-				.add(new PhotoProperty(23, 15, "PIEKNE", "ogorka 2", "2312", "C:/sadfa.jpg", new ArrayList<String>(), "contemporary"));
 
-		// Initialize the person table with the two columns.
+		// Initialize the photo table with the  columns.
 		photoNameColumn.setCellValueFactory(cellData -> cellData.getValue().photoNameProperty());
 		localizationColumn.setCellValueFactory(cellData -> cellData.getValue().localizationProperty());
 		languagesColumn.setCellValueFactory(cellData -> cellData.getValue().languagesProperty());
 		classificationColumn.setCellValueFactory(cellData -> cellData.getValue().classificationProperty());
+
+		photoTable.getColumns().get(0).setVisible(true);
+		photoTable.getColumns().get(1).setVisible(true);
+		photoTable.getColumns().get(2).setVisible(true);
+		photoTable.getColumns().get(3).setVisible(true);
 
 		photoTable.getSelectionModel().selectedItemProperty()
 				.addListener((observable, oldValue, newValue) -> showPhotoInfo(newValue));
@@ -93,10 +100,17 @@ public class InterfaceController {
 
 		photoTable.setItems(observablePhotoList);
 
+		// wrap observablePhotoList in filterList
+		filteredList = new FilteredList<>(observablePhotoList, p -> true);
+
 	}
 
 	private void showPhotoInfo(PhotoProperty newValue) {
-		this.photoNameInfo.setText(newValue.photoName);
+		this.photoNameInfo.setText(newValue.getPhotoName());
+		this.addressInfo.setText(newValue.getLocalization());
+		this.languagesInfo.setText(String.join(", ", newValue.languages));
+		this.sourceInfo.setText(newValue.getPath());
+		this.idInfo.setText(String.valueOf(newValue.getId()));
 
 		Image image1 = new Image("file:" + newValue.path);
 		this.viewInfo.setImage(image1);
@@ -115,7 +129,7 @@ public class InterfaceController {
 
 			// Create the dialog Stage.
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Edit Photo");
+			dialogStage.setTitle("New Photo");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 
 			Scene scene = new Scene(page);
@@ -131,6 +145,7 @@ public class InterfaceController {
 			dialogStage.showAndWait();
 			if (controller.isOkClicked()){
 				galleryControler.createPhoto(new Gson().toJson(photo));
+				observablePhotoList.add(photo);
 			};
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -152,7 +167,7 @@ public class InterfaceController {
 	private boolean showPhotoDetails(PhotoProperty photo) {
 
 		//find second photo
-		PhotoProperty photo2 = observablePhotoList.stream().filter(a -> a.id == photo.pairID && a.times != photo.times ).findFirst().get();
+		PhotoProperty photo2 = observablePhotoList.stream().filter(a -> a.getId() == photo.getPairID() && !a.getTimes().equals(photo.getTimes()) ).findFirst().get();
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
@@ -192,5 +207,91 @@ public class InterfaceController {
 
 	}
 
+	@FXML
+	private void showContemporary(){
+		filteredList.setPredicate(photo -> {
+			if (photo.getTimes().equals("contemporary")){
+				return true;
+			}
+			return false;
+
+		});
+		 // 3. Wrap the FilteredList in a SortedList.
+		SortedList<PhotoProperty> sortedPhotoList = new SortedList<>(filteredList);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+		sortedPhotoList.comparatorProperty().bind(photoTable.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        photoTable.setItems(sortedPhotoList);
+	}
+
+	@FXML
+	private void showInterwar(){
+		filteredList.setPredicate(photo -> {
+			if (photo.getTimes().equals("interwar")){
+				return true;
+			}
+			return false;
+
+		});
+		 // 3. Wrap the FilteredList in a SortedList.
+		SortedList<PhotoProperty> sortedPhotoList = new SortedList<>(filteredList);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+		sortedPhotoList.comparatorProperty().bind(photoTable.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        photoTable.setItems(sortedPhotoList);
+	}
+
+	@FXML
+	private void showAll(){
+		filteredList.setPredicate(photo -> {
+			return true;
+		});
+		 // 3. Wrap the FilteredList in a SortedList.
+		SortedList<PhotoProperty> sortedPhotoList = new SortedList<>(filteredList);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+		sortedPhotoList.comparatorProperty().bind(photoTable.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        photoTable.setItems(sortedPhotoList);
+	}
+
+	@FXML
+	private void editPhoto(){
+		try {
+			// Load the fxml file and create a new stage for the popup dialog.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PhotoDetailsController.class.getResource("EditPhotoDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+
+			// Create the dialog Stage.
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Edit Photo");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			// Set the photo into the controller.
+			PhotoProperty photo = photoTable.getSelectionModel().selectedItemProperty().get();
+			EditPhotoDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setPhoto(photo);
+			controller.disableTimesChoice();
+			// Show the dialog and wait until the user closes it
+			dialogStage.showAndWait();
+
+			if( controller.isOkClicked()){
+				galleryControler.updatePhoto(new Gson().toJson(photo));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+	}
 
 }

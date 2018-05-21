@@ -9,10 +9,13 @@ import javafx.beans.property.StringProperty;
 public class PhotoProperty {
 
 
-	 int id;
-	 int pairID;
-	 String photoName;
-	 String localization;
+	 private int id;
+	 private int pairID;
+	 private String photoName;
+	 private String localization;
+
+
+
 	 public String getTimes() {
 		return times;
 	}
@@ -32,6 +35,7 @@ public class PhotoProperty {
 //	private SimpleStringProperty classified ;
 //	private SimpleStringProperty path ;
 //
+
 
 
 
@@ -86,7 +90,7 @@ public class PhotoProperty {
 		return path;
 	}
 	public void setPath(String path) {
-		this.path = path;
+		this.path = path.replace("\\", "/");
 	}
 
 
@@ -117,7 +121,6 @@ public class PhotoProperty {
 
 
 	public StringProperty classificationProperty() {
-		// TODO Auto-generated method stub
 		return new SimpleStringProperty(classified) ;
 	}
 
